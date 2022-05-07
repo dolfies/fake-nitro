@@ -55,7 +55,7 @@ module.exports = class FreeNitro extends Plugin {
         }, true);
 
         // Show all emojis
-        inject('emojiPatch ', emojis, 'searchWithoutFetchingLatest', (params, res) => {
+        inject('emojiPatch', emojis, 'searchWithoutFetchingLatest', (params, res) => {
             res.unlocked = res.unlocked.concat(res.locked);
             res.locked = [];
             return res;
@@ -72,11 +72,10 @@ module.exports = class FreeNitro extends Plugin {
                 };
 
                 if (!data.emoji.available && !unavailable) {
-                    return;
+                    return res.apply(this, arguments);
                 };
 
                 onSelectEmoji(data.emoji, state.isFinalSelection);
-
                 if (state.isFinalSelection) {
                     closePopout();
                 };

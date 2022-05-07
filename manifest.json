@@ -1,0 +1,7 @@
+{
+    "name": "Fake Nitro",
+    "version": "1.0.0",
+    "description": "Replaces unusable Nitro-only emojis with URLs to their images.",
+    "author": "Dolfies#0040",
+    "license": "MIT"
+}

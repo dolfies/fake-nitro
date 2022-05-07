@@ -29,7 +29,7 @@ module.exports = class FreeNitro extends Plugin {
     async startPlugin() {
         this.registerSettings();
 
-        const emojis = await getModule([ 'getDisambiguatedEmojiContext' ])
+        const emojis = await getModule([ 'searchWithoutFetchingLatest' ])
         const emojiPicker = await getModule([ 'useEmojiSelectHandler' ]);
 
         // Replace emojis with URLs

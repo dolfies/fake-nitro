@@ -15,7 +15,6 @@ module.exports = class FreeNitro extends Plugin {
         this.getLastSelectedGuildId = await getModule([ 'getLastSelectedGuildId' ]);
         this.currentUser = await getModule([ 'getCurrentUser' ]);
         this.stickerSendability = await getModule([ 'isSendableSticker' ]);
-        this.messageQueue = await getModule([ 'enqueue' ]);
         this.messages = await getModule([ 'sendMessage' ]);
     }
 
@@ -227,11 +226,6 @@ module.exports = class FreeNitro extends Plugin {
             };
 
             return res;
-        }, false);
-
-        // Edit messages in message queue???
-        inject('messagePatch', this.messageQueue, 'enqueue', (params, res) => {
-            debugger;
         }, false);
 
     }

@@ -1,5 +1,5 @@
 # Fake Nitro
-Replaces unusable Nitro-only emojis with URLs to their images.
+Emulates Nitro perks such as emotes and stickers.
 
 ## Preview
 ![preview](https://dolfies.needsmental.help/YmxuR893ej.png?key=isjKQcSrMMUHqQ)

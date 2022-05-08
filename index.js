@@ -1,5 +1,5 @@
 const { Plugin } = require('powercord/entities');
-const { inject } = require('powercord/injector');
+const { inject, uninject } = require('powercord/injector');
 const { getModule } = require('powercord/webpack');
 
 const Settings = require('./settings.jsx');
@@ -231,6 +231,11 @@ module.exports = class FreeNitro extends Plugin {
     }
 
     pluginWillUnload() {
+        uninject('urlReplace');
+        uninject('emojiPatch');
+        uninject('emojiPickerPatch');
+        uninject('stickerPickerPatch');
+
         this.unregisterSettings();
     }
 }

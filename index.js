@@ -91,10 +91,20 @@ module.exports = class FreeNitro extends Plugin {
 
     replaceSticker(content, sticker) {
         const url = this.getStickerUrl(sticker);
-        if (url) {
-            return content + '\n' + url;
+
+        if (!content) {  // Special case for no content
+            return url;
         };
-        return content;
+
+        if (this.settings.get('spoilers', false)) {
+            if (!content.includes(hider)) {
+                content = content + hider;
+            };
+            return content + ` ${url}`;
+        }
+        else {
+            return content + ` ${url}`;
+        };
     }
 
     async startPlugin() {

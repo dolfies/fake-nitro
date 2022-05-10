@@ -16,6 +16,9 @@ module.exports = class FreeNitro extends Plugin {
         this.currentUser = await getModule([ 'getCurrentUser' ]);
         this.stickerSendability = await getModule([ 'isSendableSticker' ]);
         this.messages = await getModule([ 'sendMessage' ]);
+        this.premiumQualitySettings = await getModule([ 'ApplicationStreamSettingRequirements' ]);
+
+        this.originalPremiumQualitySettings = Object.assign({}, this.premiumQualitySettings.ApplicationStreamSettingRequirements);
     }
 
     registerSettings() {
@@ -228,6 +231,11 @@ module.exports = class FreeNitro extends Plugin {
             return res;
         }, false);
 
+        // Enable premium video qualities
+        for (let quality of this.premiumQualitySettings.ApplicationStreamSettingRequirements) {
+            delete quality.userPremiumType;
+            delete quality.guildPremiumTier;
+        };
     }
 
     pluginWillUnload() {
@@ -236,6 +244,7 @@ module.exports = class FreeNitro extends Plugin {
         uninject('emojiPickerPatch');
         uninject('stickerPickerPatch');
 
+        this.premiumQualitySettings.ApplicationStreamSettingRequirements = this.originalPremiumQualitySettings;
         this.unregisterSettings();
     }
 }

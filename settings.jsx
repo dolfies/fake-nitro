@@ -10,7 +10,7 @@ module.exports = class Settings extends React.PureComponent {
         return (
             <div>
                 <SliderInput
-                    markers={[16, 20, 24, 28, 32, 40, 42, 44, 48, 56, 60, 64]}
+                    markers={[16, 20, 22, 24, 28, 32, 40, 44, 48, 56, 60, 64]}
                     initialValue={this.props.getSetting('emojiSize', 48)}
                     onValueChange={val => this.props.updateSetting('emojiSize', val)}
                     stickToMarkers={true}
